@@ -17,6 +17,9 @@ app.get("/fetchSlots/:pin/:date", (req, res) => {
   }
   let pin = req.params.pin
   let selectedDate = req.params.date
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader("Access-Control-Allow-Headers", "*");
   axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${selectedDate}`, options).then(response => {
     res.send(response.data)
   })
