@@ -4,6 +4,13 @@ const express = require("express");
 const app = express();
 app.use(Cors())
 let port = process.env.PORT || 3005;
+
+app.options("/fetchSlots/:pin/:date", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.end();
+});
 app.get("/fetchSlots/:pin/:date", (req, res) => {
   const options = {
     headers: { 'Accept': 'application/json' }
